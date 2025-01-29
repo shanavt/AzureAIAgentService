@@ -127,11 +127,11 @@ async def save_blog_agent(blog_content: str) -> str:
         # print("Deleted file")
 
         # print the messages from the agent
-    messages = project_client.agents.get_messages(thread_id=thread.id)
+    messages = project_client.agents.list_messages(thread_id=thread.id)
     print(f"Messages: {messages}")
 
         # get the most recent message from the assistant
-    last_msg = messages.get_last_text_message_by_sender("assistant")
+    last_msg = messages.get_last_text_message_by_role("assistant")
     if last_msg:
         print(f"Last Message: {last_msg.text.value}")
 
